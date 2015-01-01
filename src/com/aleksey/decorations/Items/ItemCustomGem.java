@@ -88,10 +88,4 @@ public class ItemCustomGem extends ItemGem
 
         return true;
     }
-    
-    @Override
-    public void addInformation(ItemStack is, EntityPlayer player, List arraylist, boolean flag)
-    {
-        arraylist.add("Custom Gem");
-    }
 }

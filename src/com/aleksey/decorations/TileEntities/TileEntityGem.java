@@ -9,7 +9,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.AxisAlignedBB;
 
 import com.aleksey.decorations.Blocks.BlockCustomGem;
-import com.aleksey.decorations.Core.Bound;
+import com.aleksey.decorations.Core.Data.Bound;
 import com.bioxx.tfc.TileEntities.NetworkTileEntity;
 
 import cpw.mods.fml.relauncher.Side;

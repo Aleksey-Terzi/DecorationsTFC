@@ -1,9 +1,18 @@
 package com.aleksey.decorations;
 
+import net.minecraftforge.common.MinecraftForge;
+
 import com.aleksey.decorations.Core.BlockList;
+import com.aleksey.decorations.Core.FluidList;
 import com.aleksey.decorations.Core.ItemList;
 import com.aleksey.decorations.Core.Recipes;
+import com.aleksey.decorations.Core.Player.PlayerTracker;
+import com.aleksey.decorations.Handlers.ChunkEventHandler;
+import com.aleksey.decorations.Handlers.Network.InitClientWorldPacket;
+import com.bioxx.tfc.TerraFirmaCraft;
 
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -22,18 +31,26 @@ public class DecorationsMod
     @SidedProxy(clientSide = "com.aleksey.decorations.ClientProxy", serverSide = "com.aleksey.decorations.CommonProxy")
     public static CommonProxy proxy;
     
+    public static boolean isLanternsEnabled;
+    
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) throws ExistingSubstitutionException
     {
-        //LanternConfig.loadConfig(event);
+        isLanternsEnabled = !Loader.isModLoaded("LanternsTFC");
+        
+        System.out.println("DecorationsTFC Lanterns Enabled = " + String.valueOf(isLanternsEnabled));
+        
+        DecorationConfig.loadConfig(event);
+        
+        proxy.registerTickHandler();
+        proxy.registerTileEntities();
+        
+        FluidList.setup();
         
         BlockList.loadBlocks();
         BlockList.registerBlocks();
-
-        //proxy.registerTickHandler();
-        proxy.registerTileEntities();
                 
-        ItemList.Setup();
+        ItemList.setup();
         
         //proxy.registerGuiHandler();
     }
@@ -41,12 +58,12 @@ public class DecorationsMod
     @EventHandler
     public void initialize(FMLInitializationEvent event)
     {
-        //TerraFirmaCraft.packetPipeline.registerPacket(InitClientWorldPacket.class);
+        TerraFirmaCraft.packetPipeline.registerPacket(InitClientWorldPacket.class);
         
-        //FMLCommonHandler.instance().bus().register(new PlayerTracker());
+        FMLCommonHandler.instance().bus().register(new PlayerTracker());
         
         // Register the Chunk Load/Save Handler
-        //MinecraftForge.EVENT_BUS.register(new ChunkEventHandler());
+        MinecraftForge.EVENT_BUS.register(new ChunkEventHandler());
         
         proxy.registerRenderInformation();
         

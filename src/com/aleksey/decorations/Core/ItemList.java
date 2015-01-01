@@ -1,9 +1,13 @@
 package com.aleksey.decorations.Core;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
+import com.aleksey.decorations.DecorationsMod;
+import com.aleksey.decorations.Core.Data.LanternInfo;
 import com.aleksey.decorations.Items.ItemCustomGem;
+import com.aleksey.decorations.Items.ItemLanternCore;
 import com.bioxx.tfc.TFCItems;
 
 import cpw.mods.fml.common.registry.ExistingSubstitutionException;
@@ -11,7 +15,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ItemList
 {
-    public static void Setup() throws ExistingSubstitutionException
+    public static Item[] LanternCores;
+    
+    public static void setup() throws ExistingSubstitutionException
     {
         TFCItems.GemRuby = new ItemCustomGem(TFCItems.GemRuby).setUnlocalizedName(TFCItems.GemRuby.getUnlocalizedName().substring(5));
         TFCItems.GemSapphire = new ItemCustomGem(TFCItems.GemSapphire).setUnlocalizedName(TFCItems.GemSapphire.getUnlocalizedName().substring(5));
@@ -27,6 +33,23 @@ public class ItemList
         TFCItems.GemAmethyst = new ItemCustomGem(TFCItems.GemAmethyst).setUnlocalizedName(TFCItems.GemAmethyst.getUnlocalizedName().substring(5));
         TFCItems.GemDiamond = new ItemCustomGem(TFCItems.GemDiamond).setUnlocalizedName(TFCItems.GemDiamond.getUnlocalizedName().substring(5));
         
+        if(DecorationsMod.isLanternsEnabled)
+        {
+            LanternCores = new Item[Constants.Lanterns.length];
+            
+            for(int i = 0; i < LanternCores.length; i++)
+            {
+                LanternInfo info = Constants.Lanterns[i];
+                LanternCores[i] = new ItemLanternCore(info).setUnlocalizedName("LanternCore" + "." + info.LanternName);
+            }
+        }
+
+        registerItems();
+        registerOreDict();
+    }
+    
+    private static void registerItems() throws ExistingSubstitutionException
+    {
         GameRegistry.addSubstitutionAlias("terrafirmacraft:" + TFCItems.GemRuby.getUnlocalizedName(), GameRegistry.Type.ITEM, TFCItems.GemRuby);
         GameRegistry.addSubstitutionAlias("terrafirmacraft:" + TFCItems.GemSapphire.getUnlocalizedName(), GameRegistry.Type.ITEM, TFCItems.GemSapphire);
         GameRegistry.addSubstitutionAlias("terrafirmacraft:" + TFCItems.GemEmerald.getUnlocalizedName(), GameRegistry.Type.ITEM, TFCItems.GemEmerald);
@@ -40,8 +63,16 @@ public class ItemList
         GameRegistry.addSubstitutionAlias("terrafirmacraft:" + TFCItems.GemJasper.getUnlocalizedName(), GameRegistry.Type.ITEM, TFCItems.GemJasper);
         GameRegistry.addSubstitutionAlias("terrafirmacraft:" + TFCItems.GemAmethyst.getUnlocalizedName(), GameRegistry.Type.ITEM, TFCItems.GemAmethyst);
         GameRegistry.addSubstitutionAlias("terrafirmacraft:" + TFCItems.GemDiamond.getUnlocalizedName(), GameRegistry.Type.ITEM, TFCItems.GemDiamond);
-
-        registerOreDict();
+        
+        if(DecorationsMod.isLanternsEnabled)
+        {
+            for(int i = 0; i < LanternCores.length; i++)
+            {
+                Item lanternCore = LanternCores[i];
+                
+                GameRegistry.registerItem(lanternCore, lanternCore.getUnlocalizedName());
+            }
+        }
     }
     
     private static void registerOreDict()

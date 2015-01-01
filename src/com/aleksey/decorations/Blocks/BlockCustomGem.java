@@ -18,7 +18,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import com.aleksey.decorations.Core.Bound;
+import com.aleksey.decorations.Core.Data.Bound;
+import com.aleksey.decorations.Core.Data.GemInfo;
 import com.aleksey.decorations.TileEntities.TileEntityGem;
 import com.bioxx.tfc.Blocks.BlockTerraContainer;
 import com.bioxx.tfc.Core.TFCTabs;
@@ -28,11 +29,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCustomGem extends BlockTerraContainer
 {
-    public BlockCustomGem(int lightLevel)
+    public BlockCustomGem(GemInfo info)
     {
         super(Material.glass);
         
-        setLightLevel(lightLevel / 15.0f);
+        setLightLevel(info.LightLevel / 15.0f);
         setStepSound(Block.soundTypeGlass);
         setCreativeTab(TFCTabs.TFCMisc);
     }

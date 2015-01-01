@@ -1,5 +1,45 @@
+gui.plans.LanternCore=Lantern Core
+
 tile.Gem.Chipped.name=Chipped Gem
 tile.Gem.Flawed.name=Flawed Gem
 tile.Gem.Normal.name=Normal Gem
 tile.Gem.Flawless.name=Flawless Gem
 tile.Gem.Exquisite.name=Exquisite Gem
+
+tile.Lantern.Copper.name=Copper Lantern
+tile.Lantern.Bronze.name=Bronze Lantern
+tile.Lantern.BismuthBronze.name=Bismuth Bronze Lantern
+tile.Lantern.BlackBronze.name=Black Bronze Lantern
+tile.Lantern.Brass.name=Brass Lantern
+tile.Lantern.Lead.name=Lead Lantern
+tile.Lantern.Gold.name=Gold Lantern
+tile.Lantern.RoseGold.name=Rose Gold Lantern
+tile.Lantern.Silver.name=Silver Lantern
+tile.Lantern.SterlingSilver.name=Sterling Silver Lantern
+tile.Lantern.Platinum.name=Platinum Lantern
+tile.Lantern.WroughtIron.name=Wrought Iron Lantern
+
+item.LanternCore.Copper.name=Copper Lantern Core
+item.LanternCore.Copper.Filled.name=Copper Lantern Core Filled
+item.LanternCore.Bronze.name=Bronze Lantern Core
+item.LanternCore.Bronze.Filled.name=Bronze Lantern Core Filled
+item.LanternCore.BismuthBronze.name=Bismuth Bronze Lantern Core
+item.LanternCore.BismuthBronze.Filled.name=Bismuth Bronze Lantern Core Filled
+item.LanternCore.BlackBronze.name=Black Bronze Lantern Core
+item.LanternCore.BlackBronze.Filled.name=Black Bronze Lantern Core Filled
+item.LanternCore.Brass.name=Brass Lantern Core
+item.LanternCore.Brass.Filled.name=Brass Lantern Core Filled
+item.LanternCore.Lead.name=Lead Lantern Core
+item.LanternCore.Lead.Filled.name=Lead Lantern Core Filled
+item.LanternCore.Gold.name=Gold Lantern Core
+item.LanternCore.Gold.Filled.name=Gold Lantern Core Filled
+item.LanternCore.RoseGold.name=Rose Gold Lantern Core
+item.LanternCore.RoseGold.Filled.name=Rose Gold Lantern Core Filled
+item.LanternCore.Silver.name=Silver Lantern Core
+item.LanternCore.Silver.Filled.name=Silver Lantern Core Filled
+item.LanternCore.SterlingSilver.name=Sterling Silver Lantern Core
+item.LanternCore.SterlingSilver.Filled.name=Sterling Silver Lantern Core Filled
+item.LanternCore.Platinum.name=Platinum Lantern Core
+item.LanternCore.Platinum.Filled.name=Platinum Lantern Core Filled
+item.LanternCore.WroughtIron.name=Wrought Iron Lantern Core
+item.LanternCore.WroughtIron.Filled.name=Wrought Iron Lantern Core Filled
