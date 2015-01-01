@@ -1,1 +1,5 @@
-tile.Gem.name=Gem
+tile.Gem.Chipped.name=Chipped Gem
+tile.Gem.Flawed.name=Flawed Gem
+tile.Gem.Normal.name=Normal Gem
+tile.Gem.Flawless.name=Flawless Gem
+tile.Gem.Exquisite.name=Exquisite Gem

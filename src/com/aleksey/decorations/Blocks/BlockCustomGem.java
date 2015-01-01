@@ -28,11 +28,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCustomGem extends BlockTerraContainer
 {
-    public BlockCustomGem()
+    public BlockCustomGem(int lightLevel)
     {
         super(Material.glass);
         
-        //setLightLevel((float)_info.LightLevel / 15.0F);
+        setLightLevel(lightLevel / 15.0f);
         setStepSound(Block.soundTypeGlass);
         setCreativeTab(TFCTabs.TFCMisc);
     }
@@ -189,13 +189,6 @@ public class BlockCustomGem extends BlockTerraContainer
     {
         return new TileEntityGem();
     }
-
-    /*
-    public int getLightValue(IBlockAccess world, int x, int y, int z)
-    {
-        return world.getBlockMetadata(x, y, z) == 0 ? 0: getLightValue();
-    }
-    */
     
     public static Bound getBound(int attachedToSide)
     {

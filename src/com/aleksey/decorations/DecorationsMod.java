@@ -2,6 +2,7 @@ package com.aleksey.decorations;
 
 import com.aleksey.decorations.Core.BlockList;
 import com.aleksey.decorations.Core.ItemList;
+import com.aleksey.decorations.Core.Recipes;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -10,8 +11,9 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.ExistingSubstitutionException;
 
-@Mod(modid="DecorationsTFC", name="Decorations", version="1.0.0", dependencies="after:TerraFirmaCraft")
+@Mod(modid="DecorationsTFC", name="Decorations", version="1.0.0", dependencies="required-after:terrafirmacraft")
 public class DecorationsMod
 {
     @Instance("DecorationsTFC")
@@ -21,7 +23,7 @@ public class DecorationsMod
     public static CommonProxy proxy;
     
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event)
+    public void preInit(FMLPreInitializationEvent event) throws ExistingSubstitutionException
     {
         //LanternConfig.loadConfig(event);
         
@@ -48,7 +50,7 @@ public class DecorationsMod
         
         proxy.registerRenderInformation();
         
-        //Recipes.registerRecipes();
+        Recipes.registerRecipes();
     }
 
     @EventHandler

@@ -1,8 +1,13 @@
 package com.aleksey.decorations.Items;
 
+import java.util.List;
+
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
@@ -10,12 +15,21 @@ import com.aleksey.decorations.Core.BlockList;
 import com.aleksey.decorations.TileEntities.TileEntityGem;
 import com.bioxx.tfc.Items.ItemGem;
 
-
 public class ItemCustomGem extends ItemGem
 {
-    public ItemCustomGem()
+    private Item _parent;
+    
+    public ItemCustomGem(Item parent)
     {
         super();
+        
+        _parent = parent;
+    }
+
+    @Override
+    public IIcon getIconFromDamage(int i)
+    {
+        return _parent.getIconFromDamage(i);
     }
     
     @Override
@@ -55,7 +69,7 @@ public class ItemCustomGem extends ItemGem
         if(!world.isAirBlock(gemX, gemY, gemZ))
             return false;
         
-        world.setBlock(gemX, gemY, gemZ, BlockList.Gem, side, 0x2);
+        world.setBlock(gemX, gemY, gemZ, BlockList.Gems[itemstack.getItemDamage()], side, 0x2);
         
         if(world.isRemote)
             world.markBlockForUpdate(gemX, gemY, gemZ);
@@ -73,5 +87,11 @@ public class ItemCustomGem extends ItemGem
         entityplayer.onUpdate();
 
         return true;
+    }
+    
+    @Override
+    public void addInformation(ItemStack is, EntityPlayer player, List arraylist, boolean flag)
+    {
+        arraylist.add("Custom Gem");
     }
 }
