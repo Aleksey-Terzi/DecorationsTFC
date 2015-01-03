@@ -7,7 +7,9 @@ import net.minecraftforge.oredict.OreDictionary;
 import com.aleksey.decorations.DecorationsMod;
 import com.aleksey.decorations.Core.Data.LanternInfo;
 import com.aleksey.decorations.Items.ItemCustomGem;
+import com.aleksey.decorations.Items.ItemGypsumPowder;
 import com.aleksey.decorations.Items.ItemLanternCore;
+import com.aleksey.decorations.Items.ItemPlaster;
 import com.bioxx.tfc.TFCItems;
 
 import cpw.mods.fml.common.registry.ExistingSubstitutionException;
@@ -16,6 +18,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class ItemList
 {
     public static Item[] LanternCores;
+    public static Item Powder;
+    public static Item Plaster;
     
     public static void setup() throws ExistingSubstitutionException
     {
@@ -43,6 +47,9 @@ public class ItemList
                 LanternCores[i] = new ItemLanternCore(info).setUnlocalizedName("LanternCore" + "." + info.LanternName);
             }
         }
+        
+        Powder = new ItemGypsumPowder().setUnlocalizedName("Powders.Gypsum");
+        Plaster = new ItemPlaster().setUnlocalizedName("Plaster");
 
         registerItems();
         registerOreDict();
@@ -73,6 +80,9 @@ public class ItemList
                 GameRegistry.registerItem(lanternCore, lanternCore.getUnlocalizedName());
             }
         }
+        
+        GameRegistry.registerItem(Powder, Powder.getUnlocalizedName());
+        GameRegistry.registerItem(Plaster, Plaster.getUnlocalizedName());
     }
     
     private static void registerOreDict()

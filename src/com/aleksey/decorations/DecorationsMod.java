@@ -8,6 +8,7 @@ import com.aleksey.decorations.Core.ItemList;
 import com.aleksey.decorations.Core.Recipes;
 import com.aleksey.decorations.Core.Player.PlayerTracker;
 import com.aleksey.decorations.Handlers.ChunkEventHandler;
+import com.aleksey.decorations.Handlers.CraftingHandler;
 import com.aleksey.decorations.Handlers.Network.InitClientWorldPacket;
 import com.bioxx.tfc.TerraFirmaCraft;
 
@@ -22,7 +23,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.ExistingSubstitutionException;
 
-@Mod(modid="DecorationsTFC", name="Decorations", version="1.0.0", dependencies="required-after:terrafirmacraft")
+@Mod(modid="DecorationsTFC", name="Decorations", version="1.0.3", dependencies="required-after:terrafirmacraft")
 public class DecorationsMod
 {
     @Instance("DecorationsTFC")
@@ -45,7 +46,7 @@ public class DecorationsMod
         proxy.registerTickHandler();
         proxy.registerTileEntities();
         
-        FluidList.setup();
+        FluidList.register();
         
         BlockList.loadBlocks();
         BlockList.registerBlocks();
@@ -62,10 +63,15 @@ public class DecorationsMod
         
         FMLCommonHandler.instance().bus().register(new PlayerTracker());
         
+        //Register Crafting Handler
+        FMLCommonHandler.instance().bus().register(new CraftingHandler());
+        
         // Register the Chunk Load/Save Handler
         MinecraftForge.EVENT_BUS.register(new ChunkEventHandler());
         
         proxy.registerRenderInformation();
+        
+        FluidList.registerFluidContainers();
         
         Recipes.registerRecipes();
     }

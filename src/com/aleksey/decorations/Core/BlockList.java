@@ -3,10 +3,12 @@ package com.aleksey.decorations.Core;
 import net.minecraft.block.Block;
 
 import com.aleksey.decorations.DecorationsMod;
+import com.aleksey.decorations.Blocks.BlockAlabaster;
 import com.aleksey.decorations.Blocks.BlockCustomGem;
 import com.aleksey.decorations.Blocks.BlockCustomLantern;
 import com.aleksey.decorations.Core.Data.GemInfo;
 import com.aleksey.decorations.Core.Data.LanternInfo;
+import com.aleksey.decorations.Items.ItemBlocks.ItemAlabaster;
 import com.aleksey.decorations.Items.ItemBlocks.ItemLantern;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -17,6 +19,7 @@ public class BlockList
     
     public static Block[] Lanterns;
     public static Block[] Gems;
+    public static Block Alabaster;
     
     public static void registerBlocks()
     {
@@ -28,6 +31,8 @@ public class BlockList
         
         for(int i = 0; i < Gems.length; i++)
             GameRegistry.registerBlock(Gems[i], Gems[i].getUnlocalizedName().substring(5));
+        
+        GameRegistry.registerBlock(Alabaster, ItemAlabaster.class, Alabaster.getUnlocalizedName().substring(5));
     }
     
     public static void loadBlocks()
@@ -56,5 +61,8 @@ public class BlockList
             
             Gems[i] = new BlockCustomGem(info).setBlockName(name).setHardness(0.25f);
         }
+        
+        //Other
+        Alabaster = new BlockAlabaster().setBlockName("Alabaster");
     }
 }

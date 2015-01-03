@@ -35,7 +35,7 @@ public class BlockCustomGem extends BlockTerraContainer
         
         setLightLevel(info.LightLevel / 15.0f);
         setStepSound(Block.soundTypeGlass);
-        setCreativeTab(TFCTabs.TFCMisc);
+        //setCreativeTab(TFCTabs.TFCMisc);
     }
     
     @Override

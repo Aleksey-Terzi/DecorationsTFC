@@ -19,6 +19,8 @@ tile.Lantern.SterlingSilver.name=Sterling Silver Lantern
 tile.Lantern.Platinum.name=Platinum Lantern
 tile.Lantern.WroughtIron.name=Wrought Iron Lantern
 
+tile.Alabaster.name=Alabaster
+
 item.LanternCore.Copper.name=Copper Lantern Core
 item.LanternCore.Copper.Filled.name=Copper Lantern Core Filled
 item.LanternCore.Bronze.name=Bronze Lantern Core
@@ -43,3 +45,8 @@ item.LanternCore.Platinum.name=Platinum Lantern Core
 item.LanternCore.Platinum.Filled.name=Platinum Lantern Core Filled
 item.LanternCore.WroughtIron.name=Wrought Iron Lantern Core
 item.LanternCore.WroughtIron.Filled.name=Wrought Iron Lantern Core Filled
+
+item.Powders.Gypsum.name=Gypsum Powder
+item.Plaster.name=Wooden Bucket (Gypsum Plaster)
+
+fluid.plaster=Gypsum Plaster

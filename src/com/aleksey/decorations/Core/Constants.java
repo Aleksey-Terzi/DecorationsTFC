@@ -30,4 +30,6 @@ public class Constants
         new GemInfo("Flawless", 14),
         new GemInfo("Exquisite", 15),
     };
+    
+    public static final String[] Powders = { "Gypsum Powder" };
 }

@@ -6,16 +6,21 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import com.aleksey.decorations.DecorationsMod;
 import com.aleksey.decorations.Core.Data.LanternInfo;
+import com.aleksey.decorations.Crafting.BarrelPlasterRecipe;
+import com.bioxx.tfc.TFCBlocks;
 import com.bioxx.tfc.TFCItems;
+import com.bioxx.tfc.Core.TFCFluid;
 import com.bioxx.tfc.api.TFCCrafting;
 import com.bioxx.tfc.api.Constant.Global;
 import com.bioxx.tfc.api.Crafting.AnvilManager;
 import com.bioxx.tfc.api.Crafting.AnvilRecipe;
+import com.bioxx.tfc.api.Crafting.BarrelManager;
+import com.bioxx.tfc.api.Crafting.BarrelRecipe;
 import com.bioxx.tfc.api.Crafting.PlanRecipe;
 import com.bioxx.tfc.api.Enums.RuleEnum;
 
@@ -28,10 +33,7 @@ public class Recipes
     public static void registerRecipes()
     {
         if(DecorationsMod.isLanternsEnabled)
-        {
             registerLanternRecipes();
-            registerFluidContainers();
-        }
         
         if (TFCCrafting.diamondConversion == true)
         {
@@ -52,6 +54,11 @@ public class Recipes
             GameRegistry.addShapelessRecipe(new ItemStack(TFCItems.GemEmerald,1,3), new Object[] {new ItemStack(Items.emerald), new ItemStack(Items.emerald)});
             GameRegistry.addShapelessRecipe(new ItemStack(TFCItems.GemEmerald,1,4), new Object[] {new ItemStack(Items.emerald), new ItemStack(Items.emerald), new ItemStack(Items.emerald)});
         }
+        
+        //Gypsum Powder
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ItemList.Powder, 6, 0), new Object[] { new ItemStack(TFCItems.OreChunk, 1, 17), "itemHammer" }));
+        
+        registerBarrelRecipes();
     }
     
     private static void registerLanternRecipes()
@@ -75,21 +82,12 @@ public class Recipes
         }
     }
     
-    private static void registerFluidContainers()
+    private static void registerBarrelRecipes()
     {
-        for(int i = 0; i < Constants.Lanterns.length; i++)
-        {
-            Item core = ItemList.LanternCores[i]; 
-            ItemStack coreEmpty = new ItemStack(core, 1, 0);
-
-            for(int k = 0; k < FluidList.AlcoholFluids.length; k++)
-            {
-                FluidStack fluid = new FluidStack(FluidList.AlcoholFluids[k], 2000);
-                ItemStack coreFilled = new ItemStack(core, 1, k + 1);
-
-                FluidContainerRegistry.registerFluidContainer(fluid, coreFilled, coreEmpty);
-            }
-        }
+        BarrelManager.getInstance().addRecipe(new BarrelRecipe(new ItemStack(ItemList.Powder, 1, 0), new FluidStack(TFCFluid.FRESHWATER, 500), null, new FluidStack(FluidList.Plaster, 500), 0).setMinTechLevel(0).setSealedRecipe(false).setRemovesLiquid(false).setAllowAnyStack(false));
+        BarrelManager.getInstance().addRecipe(new BarrelRecipe(new ItemStack(TFCBlocks.Sand, 1, 32767), new FluidStack(FluidList.Plaster, 100), new ItemStack(TFCItems.Mortar, 16), new FluidStack(FluidList.Plaster, 100)).setMinTechLevel(0));
+        BarrelManager.getInstance().addRecipe(new BarrelRecipe(new ItemStack(TFCBlocks.Sand2, 1, 32767), new FluidStack(FluidList.Plaster, 100), new ItemStack(TFCItems.Mortar, 16), new FluidStack(FluidList.Plaster, 100)).setMinTechLevel(0));
+        BarrelManager.getInstance().addRecipe(new BarrelPlasterRecipe(new ItemStack(ItemList.Powder, 1, 0), new FluidStack(FluidList.Plaster, 50), new ItemStack(BlockList.Alabaster, 1), new FluidStack(FluidList.Plaster, 50)).setMinTechLevel(0));
     }
     
     public static boolean areAnvilRecipesRegistered()
