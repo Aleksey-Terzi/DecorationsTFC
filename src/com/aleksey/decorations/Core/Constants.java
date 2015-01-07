@@ -6,7 +6,7 @@ import com.bioxx.tfc.api.Crafting.AnvilReq;
 
 public class Constants
 {
-    public static final LanternInfo[] Lanterns =
+    public static LanternInfo[] Lanterns =
     {
         new LanternInfo("Copper", "item.Copper Sheet", AnvilReq.COPPER, 14),
         new LanternInfo("Bronze", "item.Bronze Sheet", AnvilReq.BRONZE, 14),
@@ -22,7 +22,7 @@ public class Constants
         new LanternInfo("WroughtIron", "item.Wrought Iron Sheet", AnvilReq.WROUGHTIRON, 15),
     };
     
-    public static final GemInfo[] Gems =
+    public static GemInfo[] Gems =
     {
         new GemInfo("Chipped", 11),
         new GemInfo("Flawed", 12),
@@ -31,5 +31,10 @@ public class Constants
         new GemInfo("Exquisite", 15),
     };
     
-    public static final String[] Powders = { "Gypsum Powder" };
+    public static String[] Powders = { "Gypsum Powder" };
+    
+    public static int[] DyeColors = new int[] {1973019, 11743532, 3887386, 5320730, 2437522, 8073150, 2651799, 0xB4B8B8, 4408131, 14188952, 4312372, 14602026, 6719955, 12801229, 15435844, 15790320};
+    
+    public static int Brush_MbPerUse = 200; 
+    public static int Brush_Capacity = 5 * Brush_MbPerUse;
 }

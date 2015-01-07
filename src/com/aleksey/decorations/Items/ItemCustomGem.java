@@ -35,6 +35,9 @@ public class ItemCustomGem extends ItemGem
     @Override
     public boolean onItemUse(ItemStack itemstack, EntityPlayer entityplayer, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
     {
+        if(!entityplayer.canPlayerEdit(x, y, z, side, itemstack))
+            return false;
+        
         Block block = world.getBlock(x, y, z);
         
         if (!block.isSideSolid(world, x, y, z, ForgeDirection.VALID_DIRECTIONS[side]))

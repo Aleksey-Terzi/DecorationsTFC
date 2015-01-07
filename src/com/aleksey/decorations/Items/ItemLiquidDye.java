@@ -1,12 +1,18 @@
 package com.aleksey.decorations.Items;
 
+import java.util.List;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
 
 import com.aleksey.decorations.Core.FluidList;
 import com.bioxx.tfc.TFCItems;
@@ -17,15 +23,24 @@ import com.bioxx.tfc.api.Enums.EnumSize;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemPlaster extends ItemTerra
+public class ItemLiquidDye extends ItemTerra
 {
     private IIcon _overlayIcon;
     
-    public ItemPlaster()
+    public ItemLiquidDye()
     {
         super();
         
+        this.setMaxDamage(0);
         this.setSize(EnumSize.MEDIUM);
+        this.setHasSubtypes(true);
+    }
+    
+    @Override
+    public void getSubItems(Item item, CreativeTabs tabs, List list)
+    {
+        for(int i = 0; i <= FluidList.LiquidDyes.length; i++)
+            list.add(new ItemStack(this, 1, i));
     }
     
     @Override
@@ -33,7 +48,7 @@ public class ItemPlaster extends ItemTerra
     public void registerIcons(IIconRegister registerer)
     {
         this.itemIcon = registerer.registerIcon("decorations:WoodenBucketEmpty");
-        _overlayIcon = registerer.registerIcon("decorations:WoodenBucketOverlay");
+        _overlayIcon = registerer.registerIcon("decorations:WoodenBucketDyeOverlay");
     }
     
     @Override
@@ -48,15 +63,26 @@ public class ItemPlaster extends ItemTerra
     public int getColorFromItemStack(ItemStack is, int pass)
     {
         return pass == 1
-            ? FluidList.Plaster.getColor()
+            ? FluidList.LiquidDyes[is.getItemDamage()].getColor()
             : super.getColorFromItemStack(is, pass);
     }
-
+    
     @Override
     @SideOnly(Side.CLIENT)
     public boolean requiresMultipleRenderPasses()
     {
         return true;
+    }
+    
+    @Override
+    public String getItemStackDisplayName(ItemStack is)
+    {
+        int meta = is.getItemDamage();
+        String displayName = super.getItemStackDisplayName(is);
+        Fluid fluid = FluidList.LiquidDyes[meta];
+        String fluidName = fluid.getLocalizedName(new FluidStack(fluid, 1));
+        
+        return displayName + " (" + fluidName + ")";
     }
 
     @Override
@@ -89,22 +115,6 @@ public class ItemPlaster extends ItemTerra
         }
 
         return is;
-    }
-
-    @Override
-    public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
-    {
-        /*
-        int[][] map = {{0,-1,0},{0,1,0},{0,0,-1},{0,0,1},{-1,0,0},{1,0,0}};
-
-        if (!isEmpty && world.isAirBlock( x + map[side][0], y + map[side][1], z + map[side][2] ) ) {
-            world.setBlock( x + map[side][0], y + map[side][1], z + map[side][2], TFCBlocks.FreshWater, 2, 0x1 );
-            player.setCurrentItemOrArmor(0, new ItemStack(TFCItems.WoodenBucketEmpty));
-            return true;
-        }
-        */
-        
-        return false;
     }
 
     @Override

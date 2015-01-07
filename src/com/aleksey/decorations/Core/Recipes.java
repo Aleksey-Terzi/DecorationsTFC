@@ -7,6 +7,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import com.aleksey.decorations.DecorationsMod;
@@ -58,6 +59,8 @@ public class Recipes
         //Gypsum Powder
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ItemList.Powder, 6, 0), new Object[] { new ItemStack(TFCItems.OreChunk, 1, 17), "itemHammer" }));
         
+        GameRegistry.addRecipe(new ItemStack(ItemList.Brush), new Object[] { "w", "r", "t", Character.valueOf('w'), new ItemStack(TFCItems.Wool), Character.valueOf('r'), new ItemStack(TFCItems.Rope), Character.valueOf('t'), new ItemStack(TFCItems.Stick) });
+
         registerBarrelRecipes();
     }
     
@@ -88,6 +91,13 @@ public class Recipes
         BarrelManager.getInstance().addRecipe(new BarrelRecipe(new ItemStack(TFCBlocks.Sand, 1, 32767), new FluidStack(FluidList.Plaster, 100), new ItemStack(TFCItems.Mortar, 16), new FluidStack(FluidList.Plaster, 100)).setMinTechLevel(0));
         BarrelManager.getInstance().addRecipe(new BarrelRecipe(new ItemStack(TFCBlocks.Sand2, 1, 32767), new FluidStack(FluidList.Plaster, 100), new ItemStack(TFCItems.Mortar, 16), new FluidStack(FluidList.Plaster, 100)).setMinTechLevel(0));
         BarrelManager.getInstance().addRecipe(new BarrelPlasterRecipe(new ItemStack(ItemList.Powder, 1, 0), new FluidStack(FluidList.Plaster, 50), new ItemStack(BlockList.Alabaster, 1), new FluidStack(FluidList.Plaster, 50)).setMinTechLevel(0));
+        
+        for(int i = 0; i < FluidList.LiquidDyes.length; i++)
+        {
+            DyeFluid dye = FluidList.LiquidDyes[i];
+            
+            BarrelManager.getInstance().addRecipe(new BarrelRecipe(new ItemStack(TFCItems.Dye, 1, dye.TFCDyeIndex), new FluidStack(TFCFluid.FRESHWATER, 400), null, new FluidStack(dye, 400), 0).setMinTechLevel(0).setSealedRecipe(false).setRemovesLiquid(false).setAllowAnyStack(false));
+        }
     }
     
     public static boolean areAnvilRecipesRegistered()

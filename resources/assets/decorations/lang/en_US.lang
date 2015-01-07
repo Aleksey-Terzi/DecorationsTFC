@@ -48,5 +48,23 @@ item.LanternCore.WroughtIron.Filled.name=Wrought Iron Lantern Core Filled
 
 item.Powders.Gypsum.name=Gypsum Powder
 item.Plaster.name=Wooden Bucket (Gypsum Plaster)
+item.LiquidDye.name=Wooden Bucket
+item.Brush.name=Brush
 
 fluid.plaster=Gypsum Plaster
+fluid.liquid_dye.black=Black Dye
+fluid.liquid_dye.red=Red Dye
+fluid.liquid_dye.green=Green Dye
+fluid.liquid_dye.brown=Brown Dye
+fluid.liquid_dye.blue=Blue Dye
+fluid.liquid_dye.purple=Purple Dye
+fluid.liquid_dye.cyan=Cyan Dye
+fluid.liquid_dye.silver=Light Gray Dye
+fluid.liquid_dye.gray=Gray Dye
+fluid.liquid_dye.pink=Pink Dye
+fluid.liquid_dye.lime=Lime Dye
+fluid.liquid_dye.yellow=Yellow Dye
+fluid.liquid_dye.lightBlue=Light Blue Dye
+fluid.liquid_dye.magenta=Magenta Dye
+fluid.liquid_dye.orange=Orange Dye
+fluid.liquid_dye.white=White Dye

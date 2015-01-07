@@ -6,9 +6,11 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import com.aleksey.decorations.DecorationsMod;
 import com.aleksey.decorations.Core.Data.LanternInfo;
+import com.aleksey.decorations.Items.ItemBrush;
 import com.aleksey.decorations.Items.ItemCustomGem;
 import com.aleksey.decorations.Items.ItemGypsumPowder;
 import com.aleksey.decorations.Items.ItemLanternCore;
+import com.aleksey.decorations.Items.ItemLiquidDye;
 import com.aleksey.decorations.Items.ItemPlaster;
 import com.bioxx.tfc.TFCItems;
 
@@ -20,6 +22,8 @@ public class ItemList
     public static Item[] LanternCores;
     public static Item Powder;
     public static Item Plaster;
+    public static Item LiquidDye;
+    public static Item Brush;
     
     public static void setup() throws ExistingSubstitutionException
     {
@@ -50,6 +54,8 @@ public class ItemList
         
         Powder = new ItemGypsumPowder().setUnlocalizedName("Powders.Gypsum");
         Plaster = new ItemPlaster().setUnlocalizedName("Plaster");
+        LiquidDye = new ItemLiquidDye().setUnlocalizedName("LiquidDye");
+        Brush = new ItemBrush().setUnlocalizedName("Brush");
 
         registerItems();
         registerOreDict();
@@ -83,6 +89,8 @@ public class ItemList
         
         GameRegistry.registerItem(Powder, Powder.getUnlocalizedName());
         GameRegistry.registerItem(Plaster, Plaster.getUnlocalizedName());
+        GameRegistry.registerItem(LiquidDye, LiquidDye.getUnlocalizedName());
+        GameRegistry.registerItem(Brush, Brush.getUnlocalizedName());
     }
     
     private static void registerOreDict()
