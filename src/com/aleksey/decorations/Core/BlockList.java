@@ -6,20 +6,27 @@ import com.aleksey.decorations.DecorationsMod;
 import com.aleksey.decorations.Blocks.BlockAlabaster;
 import com.aleksey.decorations.Blocks.BlockCustomGem;
 import com.aleksey.decorations.Blocks.BlockCustomLantern;
+import com.aleksey.decorations.Blocks.BlockMudBrickRaw;
+import com.aleksey.decorations.Blocks.BlockMudBricks;
 import com.aleksey.decorations.Core.Data.GemInfo;
 import com.aleksey.decorations.Core.Data.LanternInfo;
 import com.aleksey.decorations.Items.ItemBlocks.ItemAlabaster;
 import com.aleksey.decorations.Items.ItemBlocks.ItemLantern;
+import com.aleksey.decorations.Items.ItemBlocks.ItemMudBrickRaw;
+import com.aleksey.decorations.Items.ItemBlocks.ItemMudBricks;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockList
 {
     public static int LanternRenderId;
+    public static int MudBrickRawRenderId;
     
     public static Block[] Lanterns;
     public static Block[] Gems;
     public static Block Alabaster;
+    public static Block MudBrickRaw;
+    public static Block MudBricks;
     
     public static void registerBlocks()
     {
@@ -33,6 +40,8 @@ public class BlockList
             GameRegistry.registerBlock(Gems[i], Gems[i].getUnlocalizedName().substring(5));
         
         GameRegistry.registerBlock(Alabaster, ItemAlabaster.class, Alabaster.getUnlocalizedName().substring(5));
+        GameRegistry.registerBlock(MudBrickRaw, ItemMudBrickRaw.class, MudBrickRaw.getUnlocalizedName().substring(5));
+        GameRegistry.registerBlock(MudBricks, ItemMudBricks.class, MudBricks.getUnlocalizedName().substring(5));
     }
     
     public static void loadBlocks()
@@ -64,5 +73,7 @@ public class BlockList
         
         //Other
         Alabaster = new BlockAlabaster().setBlockName("Alabaster");
+        MudBrickRaw = new BlockMudBrickRaw().setBlockName("MudBrickRaw");
+        MudBricks = new BlockMudBricks().setBlockName("MudBricks");
     }
 }

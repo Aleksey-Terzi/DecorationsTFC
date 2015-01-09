@@ -39,7 +39,7 @@ public class ItemLiquidDye extends ItemTerra
     @Override
     public void getSubItems(Item item, CreativeTabs tabs, List list)
     {
-        for(int i = 0; i <= FluidList.LiquidDyes.length; i++)
+        for(int i = 0; i < FluidList.LiquidDyes.length; i++)
             list.add(new ItemStack(this, 1, i));
     }
     
@@ -62,8 +62,13 @@ public class ItemLiquidDye extends ItemTerra
     @SideOnly(Side.CLIENT)
     public int getColorFromItemStack(ItemStack is, int pass)
     {
+        int index = is.getItemDamage();
+        
+        if(index < 0 || index >= FluidList.LiquidDyes.length)
+            index = 0;
+        
         return pass == 1
-            ? FluidList.LiquidDyes[is.getItemDamage()].getColor()
+            ? FluidList.LiquidDyes[index].getColor()
             : super.getColorFromItemStack(is, pass);
     }
     

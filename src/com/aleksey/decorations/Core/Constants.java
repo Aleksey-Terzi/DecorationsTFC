@@ -37,4 +37,8 @@ public class Constants
     
     public static int Brush_MbPerUse = 200; 
     public static int Brush_Capacity = 5 * Brush_MbPerUse;
+    
+    public static int MudBrick_DryTimeInHours = 12;
+    public static int MudBrick_ColorWet = 0xAF976F;
+    public static int MudBrick_ColorDry = 0xAA9C88;
 }
