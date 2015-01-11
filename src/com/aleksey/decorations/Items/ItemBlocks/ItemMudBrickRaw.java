@@ -62,13 +62,13 @@ public class ItemMudBrickRaw extends ItemBlock implements ISize
     @Override
     public EnumSize getSize(ItemStack is)
     {
-        return EnumSize.SMALL;
+        return EnumSize.VERYSMALL;
     }
 
     @Override
     public EnumWeight getWeight(ItemStack is)
     {
-        return EnumWeight.MEDIUM;
+        return EnumWeight.HEAVY;
     }
     
     @Override

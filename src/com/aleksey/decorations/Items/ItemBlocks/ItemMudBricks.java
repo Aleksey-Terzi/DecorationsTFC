@@ -6,8 +6,11 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 
+import com.aleksey.decorations.Blocks.BlockMudBricks;
 import com.bioxx.tfc.Items.ItemTerra;
+import com.bioxx.tfc.api.Constant.Global;
 import com.bioxx.tfc.api.Enums.EnumItemReach;
 import com.bioxx.tfc.api.Enums.EnumSize;
 import com.bioxx.tfc.api.Enums.EnumWeight;
@@ -15,25 +18,23 @@ import com.bioxx.tfc.api.Interfaces.ISize;
 
 public class ItemMudBricks extends ItemBlock implements ISize
 {
+    private int _startIndex;
+    
     public ItemMudBricks(Block block)
     {
         super(block);
         
         setHasSubtypes(true);
+        
+        _startIndex = ((BlockMudBricks)block).getStartIndex();
     }
     
     @Override
     public String getUnlocalizedName(ItemStack itemstack)
     {
-        return getUnlocalizedName();
-        /*
-        int meta = itemstack.getItemDamage();
+        int index = _startIndex + itemstack.getItemDamage();
         
-        if(meta < 0 || meta >= _names.length)
-            meta = 0;
-        
-        return getUnlocalizedName() + "." + _names[meta];
-        */
+        return getUnlocalizedName() + "." + Global.STONE_ALL[index];
     }
     
     @Override
@@ -63,13 +64,13 @@ public class ItemMudBricks extends ItemBlock implements ISize
     @Override
     public EnumSize getSize(ItemStack is)
     {
-        return EnumSize.SMALL;
+        return EnumSize.VERYSMALL;
     }
 
     @Override
     public EnumWeight getWeight(ItemStack is)
     {
-        return EnumWeight.MEDIUM;
+        return EnumWeight.HEAVY;
     }
     
     @Override

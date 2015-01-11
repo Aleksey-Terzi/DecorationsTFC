@@ -1,72 +1,50 @@
 package com.aleksey.decorations.Blocks;
 
-import java.util.List;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.common.MinecraftForge;
 
-import com.aleksey.decorations.Core.Constants;
-import com.bioxx.tfc.Blocks.BlockTerra;
+import com.bioxx.tfc.Blocks.Terrain.BlockSmooth;
 import com.bioxx.tfc.Core.TFCTabs;
+import com.bioxx.tfc.api.Constant.Global;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-public class BlockMudBricks extends BlockTerra
+public class BlockMudBricks extends BlockSmooth
 {
-    @SideOnly(Side.CLIENT)
-    private IIcon _icon;
+    private int _startIndex;
     
-    public BlockMudBricks()
+    public int getStartIndex()
+    {
+        return _startIndex;
+    }
+    
+    public BlockMudBricks(int startIndex)
     {
         super(Material.ground);
         
-        this.setHardness(2f);
+        this.setHardness(3f);
         this.setResistance(10.0f);
+        this.setHarvestLevel("pickaxe", 0);
         this.setCreativeTab(TFCTabs.TFCBuilding);
+        
+        _startIndex = startIndex;
+        
+        int count = _startIndex == 0 ? 16: Global.STONE_ALL.length - _startIndex;
+        
+        this.names = new String[count];
+        this.icons = new IIcon[count];
     }
     
-    @SideOnly(Side.CLIENT)
     @Override
-    public int getRenderColor(int meta)
+    public IIcon getIcon(int side, int meta)
     {
-        return Constants.MudBrick_ColorDry;
-    }
-    
-    @SideOnly(Side.CLIENT)
-    @Override
-    public int colorMultiplier(IBlockAccess world, int x, int y, int z)
-    {
-        return Constants.MudBrick_ColorDry;
-    }
-
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List list)
-    {
-        list.add(new ItemStack(this, 1, 0));
-    }
-
-    @Override
-    public int damageDropped(int i)
-    {
-        return i;
-    }
-
-    @Override
-    public IIcon getIcon(int side, int metadata)
-    {
-        return _icon;
+        return this.icons[meta];
     }
 
     @Override
     public void registerBlockIcons(IIconRegister register)
     {
-        _icon = register.registerIcon("decorations:mudbricks/AndesiteBricks");
+        for(int i = 0; i < this.icons.length; i++)
+            this.icons[i] = register.registerIcon("decorations:mudbricks/" + Global.STONE_ALL[_startIndex + i].replaceAll(" ", "") + "Bricks");
     }
 }

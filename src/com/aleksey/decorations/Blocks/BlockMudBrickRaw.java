@@ -20,6 +20,7 @@ import com.aleksey.decorations.Render.Blocks.RenderMudBrickRaw;
 import com.aleksey.decorations.TileEntities.TileEntityMudBrickRaw;
 import com.bioxx.tfc.Blocks.BlockTerraContainer;
 import com.bioxx.tfc.Core.TFCTabs;
+import com.bioxx.tfc.api.Constant.Global;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -32,7 +33,14 @@ public class BlockMudBrickRaw extends BlockTerraContainer
     @SideOnly(Side.CLIENT)
     private IIcon _topIcon;
     
-    public BlockMudBrickRaw()
+    private int _stoneIndex;
+    
+    public int getStoneIndex()
+    {
+        return _stoneIndex;
+    }
+    
+    public BlockMudBrickRaw(int stoneIndex)
     {
         super(Material.ground);
         
@@ -40,6 +48,8 @@ public class BlockMudBrickRaw extends BlockTerraContainer
         this.setResistance(10.0f);
         this.setCreativeTab(TFCTabs.TFCMaterials);
         this.setBlockBounds((float)RenderMudBrickRaw.VoxelSizeScaled, 0, (float)RenderMudBrickRaw.VoxelSizeScaled, 1 - (float)RenderMudBrickRaw.VoxelSizeScaled, 8 * (float)RenderMudBrickRaw.VoxelSizeScaled, 1 - (float)RenderMudBrickRaw.VoxelSizeScaled);
+        
+        _stoneIndex = stoneIndex;
     }
     
     @SideOnly(Side.CLIENT)
@@ -81,8 +91,10 @@ public class BlockMudBrickRaw extends BlockTerraContainer
     @Override
     public void registerBlockIcons(IIconRegister register)
     {
-        _topIcon = register.registerIcon("decorations:mudbricks/AndesiteBrickTop");
-        _sideIcon = register.registerIcon("decorations:mudbricks/AndesiteBrickSide");
+        String baseName = "decorations:mudbricks/" + Global.STONE_ALL[_stoneIndex].replaceAll(" ", "");
+        
+        _topIcon = register.registerIcon(baseName + "BrickTop");
+        _sideIcon = register.registerIcon(baseName + "BrickSide");
     }
     
     @Override

@@ -60,7 +60,8 @@ public class Recipes
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ItemList.Powder, 6, 0), new Object[] { new ItemStack(TFCItems.OreChunk, 1, 17), "itemHammer" }));
         
         GameRegistry.addRecipe(new ItemStack(ItemList.Brush), new Object[] { "w", "r", "t", Character.valueOf('w'), new ItemStack(TFCItems.Wool), Character.valueOf('r'), new ItemStack(TFCItems.Rope), Character.valueOf('t'), new ItemStack(TFCItems.Stick) });
-
+        
+        registerMudBrickRecipes();
         registerBarrelRecipes();
     }
     
@@ -83,6 +84,27 @@ public class Recipes
                 GameRegistry.addRecipe(lantern, new Object[] { "ygt", "gsg", "ygt", Character.valueOf('g'), glassPane, Character.valueOf('s'), coreFilled, Character.valueOf('t'), stick, Character.valueOf('y'), yarn });
             }
         }
+    }
+    
+    private static void registerMudBrickRecipes()
+    {
+        for(int i = 0; i < 16; i++)
+        {
+            GameRegistry.addShapelessRecipe(new ItemStack(BlockList.MudBrickRaws[i], 1, 0), new Object[] { new ItemStack(TFCBlocks.Dirt, 1, i), new ItemStack(TFCItems.ClayBall, 1, 0), new ItemStack(TFCItems.Straw) });
+            GameRegistry.addShapelessRecipe(new ItemStack(BlockList.MudBrickRaws[i], 1, 0), new Object[] { new ItemStack(TFCBlocks.Sand, 1, i), new ItemStack(TFCItems.ClayBall, 1, 0), new ItemStack(TFCItems.Straw) });
+        }
+            
+        for(int i = 0; i < Global.STONE_ALL.length - 16; i++)
+        {
+            GameRegistry.addShapelessRecipe(new ItemStack(BlockList.MudBrickRaws[16 + i], 1, 0), new Object[] { new ItemStack(TFCBlocks.Dirt2, 1, i), new ItemStack(TFCItems.ClayBall, 1, 0), new ItemStack(TFCItems.Straw) });
+            GameRegistry.addShapelessRecipe(new ItemStack(BlockList.MudBrickRaws[16 + i], 1, 0), new Object[] { new ItemStack(TFCBlocks.Sand2, 1, i), new ItemStack(TFCItems.ClayBall, 1, 0), new ItemStack(TFCItems.Straw) });
+        }
+
+        for(int i = 0; i < 16; i++)
+            GameRegistry.addRecipe(new ItemStack(BlockList.MudBricks, 4, i), new Object[] { "mm", "mm", Character.valueOf('m'), new ItemStack(BlockList.MudBrickRaws[i], 1, 1) });
+            
+        for(int i = 0; i < Global.STONE_ALL.length - 16; i++)
+            GameRegistry.addRecipe(new ItemStack(BlockList.MudBricks2, 4, i), new Object[] { "mm", "mm", Character.valueOf('m'), new ItemStack(BlockList.MudBrickRaws[16 + i], 1, 1) });
     }
     
     private static void registerBarrelRecipes()
