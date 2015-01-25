@@ -25,6 +25,12 @@ public class ItemCustomGem extends ItemGem
         
         _parent = parent;
     }
+    
+    @Override
+    public void registerIcons(IIconRegister registerer)
+    {
+        _parent.registerIcons(registerer);
+    }
 
     @Override
     public IIcon getIconFromDamage(int i)
