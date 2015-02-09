@@ -12,6 +12,7 @@ public class DecorationConfig
 {
     private static final String CategoryName_Lanterns = "Lanterns Light Levels";
     private static final String CategoryName_Gems = "Gems Light Levels";
+    private static final String CategoryName_Modules = "Modules";
     
     public static void loadConfig(FMLPreInitializationEvent event)
     {
@@ -19,6 +20,7 @@ public class DecorationConfig
         
         loadLanterns(config);
         loadGems(config);
+        loadModules(config);
         
         config.save();
     }
@@ -55,5 +57,10 @@ public class DecorationConfig
             else if(info.LightLevel > 15)
                 info.LightLevel = 15;
         }
+    }
+    
+    private static void loadModules(Configuration config)
+    {
+        DecorationsMod.instance.isGemsEnabled = config.get(CategoryName_Modules, "GemsEnabled", true).getBoolean();
     }
 }

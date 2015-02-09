@@ -23,7 +23,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.ExistingSubstitutionException;
 
-@Mod(modid="DecorationsTFC", name="Decorations", version="1.0.12", dependencies="required-after:terrafirmacraft")
+@Mod(modid="DecorationsTFC", name="Decorations", version="1.0.15", dependencies="required-after:terrafirmacraft")
 public class DecorationsMod
 {
     @Instance("DecorationsTFC")
@@ -33,15 +33,16 @@ public class DecorationsMod
     public static CommonProxy proxy;
     
     public static boolean isLanternsEnabled;
+    public static boolean isGemsEnabled;
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) throws ExistingSubstitutionException
     {
+        DecorationConfig.loadConfig(event);
+        
         isLanternsEnabled = !Loader.isModLoaded("LanternsTFC");
         
         System.out.println("DecorationsTFC Lanterns Enabled = " + String.valueOf(isLanternsEnabled));
-        
-        DecorationConfig.loadConfig(event);
         
         proxy.registerTickHandler();
         proxy.registerTileEntities();

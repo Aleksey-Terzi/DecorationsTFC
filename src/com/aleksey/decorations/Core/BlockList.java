@@ -38,8 +38,11 @@ public class BlockList
                 GameRegistry.registerBlock(Lanterns[i], ItemLantern.class, Lanterns[i].getUnlocalizedName().substring(5));
         }
         
-        for(int i = 0; i < Gems.length; i++)
-            GameRegistry.registerBlock(Gems[i], Gems[i].getUnlocalizedName().substring(5));
+        if(DecorationsMod.isGemsEnabled)
+        {
+            for(int i = 0; i < Gems.length; i++)
+                GameRegistry.registerBlock(Gems[i], Gems[i].getUnlocalizedName().substring(5));
+        }
         
         GameRegistry.registerBlock(Alabaster, ItemAlabaster.class, Alabaster.getUnlocalizedName().substring(5));
         
@@ -66,20 +69,24 @@ public class BlockList
             }
         }
         
-        //Gems
-        Gems = new Block[Constants.Gems.length];
-        
-        for(int i = 0; i < Gems.length; i++)
+        if(DecorationsMod.isGemsEnabled)
         {
-            GemInfo info = Constants.Gems[i];
-            String name = "Gem." + info.GemName; 
+            //Gems
+            Gems = new Block[Constants.Gems.length];
             
-            Gems[i] = new BlockCustomGem(info).setBlockName(name).setHardness(0.25f);
+            for(int i = 0; i < Gems.length; i++)
+            {
+                GemInfo info = Constants.Gems[i];
+                String name = "Gem." + info.GemName; 
+                
+                Gems[i] = new BlockCustomGem(info).setBlockName(name).setHardness(0.25f);
+            }
         }
         
-        //Other
+        //Gypsum
         Alabaster = new BlockAlabaster().setBlockName("Alabaster");
         
+        //Mud Bricks
         MudBrickRaws = new Block[Global.STONE_ALL.length];
         
         for(int i = 0; i < MudBrickRaws.length; i++)
