@@ -1,8 +1,8 @@
 package com.aleksey.decorations.Core;
 
-import com.bioxx.tfc.Core.TFCFluid;
+import com.bioxx.tfc.Core.FluidBaseTFC;
 
-public class DyeFluid extends TFCFluid
+public class DyeFluid extends FluidBaseTFC
 {
     public int TFCDyeIndex;
     

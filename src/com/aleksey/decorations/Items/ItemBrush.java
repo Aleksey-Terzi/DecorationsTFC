@@ -14,7 +14,7 @@ import net.minecraftforge.fluids.IFluidContainerItem;
 import com.aleksey.decorations.Blocks.BlockAlabaster;
 import com.aleksey.decorations.Core.Constants;
 import com.aleksey.decorations.Core.FluidList;
-import com.bioxx.tfc.Core.TFCFluid;
+import com.bioxx.tfc.Core.FluidBaseTFC;
 import com.bioxx.tfc.Core.TFCTabs;
 import com.bioxx.tfc.Items.ItemTerra;
 import com.bioxx.tfc.api.Enums.EnumSize;
@@ -59,7 +59,7 @@ public class ItemBrush extends ItemTerra implements IFluidContainerItem
         if(pass == 0 || fluidStack == null)
             return super.getColorFromItemStack(is, pass);
         
-        TFCFluid fluid = (TFCFluid)fluidStack.getFluid(); 
+        FluidBaseTFC fluid = (FluidBaseTFC)fluidStack.getFluid(); 
         
         return fluid.getColor();
     }

@@ -12,7 +12,7 @@ import com.aleksey.decorations.Items.ItemGypsumPowder;
 import com.aleksey.decorations.Items.ItemLanternCore;
 import com.aleksey.decorations.Items.ItemLiquidDye;
 import com.aleksey.decorations.Items.ItemPlaster;
-import com.bioxx.tfc.TFCItems;
+import com.bioxx.tfc.api.TFCItems;
 
 import cpw.mods.fml.common.registry.ExistingSubstitutionException;
 import cpw.mods.fml.common.registry.GameRegistry;

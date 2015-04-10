@@ -8,15 +8,16 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
 import com.aleksey.decorations.DecorationsMod;
-import com.bioxx.tfc.TFCItems;
-import com.bioxx.tfc.Core.TFCFluid;
+import com.bioxx.tfc.Core.FluidBaseTFC;
 import com.bioxx.tfc.Items.ItemDyeCustom;
+import com.bioxx.tfc.api.TFCFluids;
+import com.bioxx.tfc.api.TFCItems;
 
 public class FluidList
 {
     public static Fluid[] AlcoholFluids;
     
-    public static TFCFluid Plaster = new TFCFluid("plaster").setBaseColor(0xD5D1C0);
+    public static FluidBaseTFC Plaster = new FluidBaseTFC("plaster").setBaseColor(0xD5D1C0);
     
     public static DyeFluid[] LiquidDyes;
     
@@ -24,14 +25,14 @@ public class FluidList
     {
         AlcoholFluids = new Fluid[]
         {
-            TFCFluid.RUM,
-            TFCFluid.BEER,
-            TFCFluid.RYEWHISKEY,
-            TFCFluid.WHISKEY,
-            TFCFluid.CORNWHISKEY,
-            TFCFluid.SAKE,
-            TFCFluid.VODKA,
-            TFCFluid.CIDER
+    		TFCFluids.RUM,
+    		TFCFluids.BEER,
+    		TFCFluids.RYEWHISKEY,
+    		TFCFluids.WHISKEY,
+    		TFCFluids.CORNWHISKEY,
+    		TFCFluids.SAKE,
+    		TFCFluids.VODKA,
+    		TFCFluids.CIDER
         };
         
         FluidRegistry.registerFluid(Plaster);

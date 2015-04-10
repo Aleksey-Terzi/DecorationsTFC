@@ -7,16 +7,15 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import com.aleksey.decorations.DecorationsMod;
 import com.aleksey.decorations.Core.Data.LanternInfo;
 import com.aleksey.decorations.Crafting.BarrelPlasterRecipe;
-import com.bioxx.tfc.TFCBlocks;
-import com.bioxx.tfc.TFCItems;
-import com.bioxx.tfc.Core.TFCFluid;
+import com.bioxx.tfc.api.TFCBlocks;
 import com.bioxx.tfc.api.TFCCrafting;
+import com.bioxx.tfc.api.TFCFluids;
+import com.bioxx.tfc.api.TFCItems;
 import com.bioxx.tfc.api.Constant.Global;
 import com.bioxx.tfc.api.Crafting.AnvilManager;
 import com.bioxx.tfc.api.Crafting.AnvilRecipe;
@@ -112,7 +111,7 @@ public class Recipes
     
     private static void registerBarrelRecipes()
     {
-        BarrelManager.getInstance().addRecipe(new BarrelRecipe(new ItemStack(ItemList.Powder, 1, 0), new FluidStack(TFCFluid.FRESHWATER, 500), null, new FluidStack(FluidList.Plaster, 500), 0).setMinTechLevel(0).setSealedRecipe(false).setRemovesLiquid(false).setAllowAnyStack(false));
+        BarrelManager.getInstance().addRecipe(new BarrelRecipe(new ItemStack(ItemList.Powder, 1, 0), new FluidStack(TFCFluids.FRESHWATER, 500), null, new FluidStack(FluidList.Plaster, 500), 0).setMinTechLevel(0).setSealedRecipe(false).setRemovesLiquid(false).setAllowAnyStack(false));
         BarrelManager.getInstance().addRecipe(new BarrelRecipe(new ItemStack(TFCBlocks.Sand, 1, 32767), new FluidStack(FluidList.Plaster, 100), new ItemStack(TFCItems.Mortar, 16), new FluidStack(FluidList.Plaster, 100)).setMinTechLevel(0));
         BarrelManager.getInstance().addRecipe(new BarrelRecipe(new ItemStack(TFCBlocks.Sand2, 1, 32767), new FluidStack(FluidList.Plaster, 100), new ItemStack(TFCItems.Mortar, 16), new FluidStack(FluidList.Plaster, 100)).setMinTechLevel(0));
         BarrelManager.getInstance().addRecipe(new BarrelPlasterRecipe(new ItemStack(ItemList.Powder, 1, 0), new FluidStack(FluidList.Plaster, 50), new ItemStack(BlockList.Alabaster, 1), new FluidStack(FluidList.Plaster, 50)).setMinTechLevel(0));
@@ -121,7 +120,7 @@ public class Recipes
         {
             DyeFluid dye = FluidList.LiquidDyes[i];
             
-            BarrelManager.getInstance().addRecipe(new BarrelRecipe(new ItemStack(TFCItems.Dye, 1, dye.TFCDyeIndex), new FluidStack(TFCFluid.FRESHWATER, 400), null, new FluidStack(dye, 400), 0).setMinTechLevel(0).setSealedRecipe(false).setRemovesLiquid(false).setAllowAnyStack(false));
+            BarrelManager.getInstance().addRecipe(new BarrelRecipe(new ItemStack(TFCItems.Dye, 1, dye.TFCDyeIndex), new FluidStack(TFCFluids.FRESHWATER, 400), null, new FluidStack(dye, 400), 0).setMinTechLevel(0).setSealedRecipe(false).setRemovesLiquid(false).setAllowAnyStack(false));
         }
     }
     

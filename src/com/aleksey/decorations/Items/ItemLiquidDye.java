@@ -15,8 +15,8 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
 import com.aleksey.decorations.Core.FluidList;
-import com.bioxx.tfc.TFCItems;
 import com.bioxx.tfc.Items.ItemTerra;
+import com.bioxx.tfc.api.TFCItems;
 import com.bioxx.tfc.api.Enums.EnumItemReach;
 import com.bioxx.tfc.api.Enums.EnumSize;
 
