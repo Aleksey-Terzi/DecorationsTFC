@@ -140,7 +140,7 @@ public class Recipes
         {
             AnvilManager manager = AnvilManager.getInstance();
             
-            manager.addPlan(_lanternCorePlan, new PlanRecipe(new RuleEnum[] { RuleEnum.HITLAST, RuleEnum.PUNCHANY, RuleEnum.HITANY }));
+            manager.addPlan(_lanternCorePlan, new PlanRecipe(new RuleEnum[] { RuleEnum.HITLAST, RuleEnum.PUNCHNOTLAST, RuleEnum.HITNOTLAST }));
             
             for(int i = 0; i < Constants.Lanterns.length; i++)
             {

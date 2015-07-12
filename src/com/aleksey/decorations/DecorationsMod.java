@@ -23,7 +23,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.ExistingSubstitutionException;
 
-@Mod(modid="DecorationsTFC", name="Decorations", version="1.0.17", dependencies="required-after:terrafirmacraft")
+@Mod(modid="DecorationsTFC", name="Decorations", version="1.0.18", dependencies="required-after:terrafirmacraft")
 public class DecorationsMod
 {
     @Instance("DecorationsTFC")
