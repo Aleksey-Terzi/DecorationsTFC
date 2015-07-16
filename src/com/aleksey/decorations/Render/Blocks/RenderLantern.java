@@ -202,7 +202,7 @@ public class RenderLantern implements ISimpleBlockRenderingHandler
 
         renderer.clearOverrideBlockTexture();
 
-        return false;
+        return true;
     }
     
     private static boolean isWallLow(int x, int y, int z, Block block, RenderBlocks renderer)

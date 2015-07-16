@@ -30,7 +30,7 @@ public class RenderMudBrickRaw implements ISimpleBlockRenderingHandler
         setBound(_bound, renderer);
         renderer.renderStandardBlock(block, x, y, z);
 
-        return false;
+        return true;
     }
     
     @Override
