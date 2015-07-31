@@ -6,6 +6,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
@@ -134,22 +135,24 @@ public class Recipes
         return map.containsKey(_lanternCorePlan);
     }
     
-    public static void registerAnvilRecipes()
+    public static void registerAnvilRecipes(World world)
     {
-        if(DecorationsMod.isLanternsEnabled)
+        if(!DecorationsMod.isLanternsEnabled)
+            return;
+        
+        AnvilManager manager = AnvilManager.getInstance();
+        //We need to set the world ref so that all anvil recipes can generate correctly
+        AnvilManager.world = world;
+        
+        manager.addPlan(_lanternCorePlan, new PlanRecipe(new RuleEnum[] { RuleEnum.HITLAST, RuleEnum.PUNCHNOTLAST, RuleEnum.HITNOTLAST }));
+        
+        for(int i = 0; i < Constants.Lanterns.length; i++)
         {
-            AnvilManager manager = AnvilManager.getInstance();
-            
-            manager.addPlan(_lanternCorePlan, new PlanRecipe(new RuleEnum[] { RuleEnum.HITLAST, RuleEnum.PUNCHNOTLAST, RuleEnum.HITNOTLAST }));
-            
-            for(int i = 0; i < Constants.Lanterns.length; i++)
-            {
-                LanternInfo info = Constants.Lanterns[i];
-                Item sheetItem = GameRegistry.findItem("terrafirmacraft", info.SheetName);            
-                ItemStack lanternCore = new ItemStack(ItemList.LanternCores[i], 1, 0);
-    
-                manager.addRecipe(new AnvilRecipe(new ItemStack(sheetItem), null, _lanternCorePlan, false, info.Anvil, lanternCore).addRecipeSkill(Global.SKILL_GENERAL_SMITHING));
-            }
+            LanternInfo info = Constants.Lanterns[i];
+            Item sheetItem = GameRegistry.findItem("terrafirmacraft", info.SheetName);            
+            ItemStack lanternCore = new ItemStack(ItemList.LanternCores[i], 1, 0);
+
+            manager.addRecipe(new AnvilRecipe(new ItemStack(sheetItem), null, _lanternCorePlan, false, info.Anvil, lanternCore).addRecipeSkill(Global.SKILL_GENERAL_SMITHING));
         }
     }
 }

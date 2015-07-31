@@ -28,7 +28,7 @@ public class InitClientWorldPacket extends AbstractPacket
     public void handleClientSide(EntityPlayer player)
     {
         if(!Recipes.areAnvilRecipesRegistered())
-            Recipes.registerAnvilRecipes();
+            Recipes.registerAnvilRecipes(player.worldObj);
     }
 
     @Override
