@@ -38,7 +38,7 @@ public class BlockCustomLantern extends Block
         setBlockBounds(0.25F, 0.125F, 0.25F, 0.75F, 0.75F, 0.75F);
         setLightLevel((float)_info.LightLevel / 15.0F);
         setStepSound(Block.soundTypeMetal);
-        setCreativeTab(TFCTabs.TFCMisc);
+        setCreativeTab(TFCTabs.TFC_MISC);
     }
 
     @Override

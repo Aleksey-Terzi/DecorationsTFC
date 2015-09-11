@@ -37,7 +37,7 @@ public class FluidList
         
         FluidRegistry.registerFluid(Plaster);
         
-        LiquidDyes = new DyeFluid[ItemDyeCustom.dyeColorNames.length];
+        LiquidDyes = new DyeFluid[ItemDyeCustom.DYE_COLOR_NAMES.length];
         
         for(int i = 0; i < LiquidDyes.length; i++)
         {
@@ -50,7 +50,7 @@ public class FluidList
             else
                 dyeIndex = i;
             
-            String fluidName = "liquid_dye." + ItemDyeCustom.dyeColorNames[dyeIndex];
+            String fluidName = "liquid_dye." + ItemDyeCustom.DYE_COLOR_NAMES[dyeIndex];
             int color = Constants.DyeColors[dyeIndex];
             DyeFluid fluid = new DyeFluid(fluidName, dyeIndex);
             
@@ -79,9 +79,9 @@ public class FluidList
             }
         }
         
-        FluidContainerRegistry.registerFluidContainer(new FluidStack(Plaster, 1000), new ItemStack(ItemList.Plaster), new ItemStack(TFCItems.WoodenBucketEmpty));
+        FluidContainerRegistry.registerFluidContainer(new FluidStack(Plaster, 1000), new ItemStack(ItemList.Plaster), new ItemStack(TFCItems.woodenBucketEmpty));
         
         for(int i = 0; i < LiquidDyes.length; i++)
-            FluidContainerRegistry.registerFluidContainer(new FluidStack(LiquidDyes[i], 1000), new ItemStack(ItemList.LiquidDye, 1, i), new ItemStack(TFCItems.WoodenBucketEmpty));
+            FluidContainerRegistry.registerFluidContainer(new FluidStack(LiquidDyes[i], 1000), new ItemStack(ItemList.LiquidDye, 1, i), new ItemStack(TFCItems.woodenBucketEmpty));
     }
 }

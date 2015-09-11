@@ -33,7 +33,7 @@ public class ItemLanternCore extends ItemTerra
         _info = info;
         
         setMaxDamage(0);
-        setCreativeTab(TFCTabs.TFCMisc);
+        setCreativeTab(TFCTabs.TFC_MISC);
     }
     
     @Override

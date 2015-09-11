@@ -14,7 +14,7 @@ public class ItemGypsumPowder extends ItemTerra
     {
         super();
         
-        setCreativeTab(TFCTabs.TFCMaterials);
+        setCreativeTab(TFCTabs.TFC_MATERIALS);
     }
     
     @Override

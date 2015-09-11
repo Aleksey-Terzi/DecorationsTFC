@@ -16,12 +16,12 @@ public class BlockAlabaster extends BlockSmooth
         super(Material.rock);
         this.setHardness(12f);
         this.setResistance(10.0f);
-        this.setCreativeTab(TFCTabs.TFCBuilding);
+        this.setCreativeTab(TFCTabs.TFC_BUILDING);
         
         this.names = new String[16];
         for(int i = 0; i < this.names.length; i++)
         {
-            String dyeName = ItemDyeCustom.dyeColorNames[FluidList.LiquidDyes[i].TFCDyeIndex];
+            String dyeName = ItemDyeCustom.DYE_COLOR_NAMES[FluidList.LiquidDyes[i].TFCDyeIndex];
 
             this.names[i] = "Alabaster" + dyeName.substring(0, 1).toUpperCase() + dyeName.substring(1);
         }
