@@ -46,7 +46,7 @@ public class BlockMudBrickRaw extends BlockTerraContainer
         
         this.setHardness(0.3f);
         this.setResistance(10.0f);
-        this.setCreativeTab(TFCTabs.TFCMaterials);
+        this.setCreativeTab(TFCTabs.TFC_MATERIALS);
         this.setBlockBounds((float)RenderMudBrickRaw.VoxelSizeScaled, 0, (float)RenderMudBrickRaw.VoxelSizeScaled, 1 - (float)RenderMudBrickRaw.VoxelSizeScaled, 8 * (float)RenderMudBrickRaw.VoxelSizeScaled, 1 - (float)RenderMudBrickRaw.VoxelSizeScaled);
         
         _stoneIndex = stoneIndex;

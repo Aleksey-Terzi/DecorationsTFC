@@ -60,7 +60,7 @@ public class DecorationsMod
     @EventHandler
     public void initialize(FMLInitializationEvent event)
     {
-        TerraFirmaCraft.packetPipeline.registerPacket(InitClientWorldPacket.class);
+        TerraFirmaCraft.PACKET_PIPELINE.registerPacket(InitClientWorldPacket.class);
         
         FMLCommonHandler.instance().bus().register(new PlayerTracker());
         

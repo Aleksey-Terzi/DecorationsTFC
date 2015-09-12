@@ -23,7 +23,7 @@ public class CraftingHandler
         if(iinventory != null)
         {
             if(item == ItemList.Powder && isDmg == 0)
-                com.bioxx.tfc.Handlers.CraftingHandler.HandleItem(e.player, e.craftMatrix, Recipes.Hammers);
+                com.bioxx.tfc.Handlers.CraftingHandler.handleItem(e.player, e.craftMatrix, Recipes.hammers);
         }
     }
 }

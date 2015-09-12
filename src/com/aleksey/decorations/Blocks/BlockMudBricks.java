@@ -25,7 +25,7 @@ public class BlockMudBricks extends BlockSmooth
         this.setHardness(3f);
         this.setResistance(10.0f);
         this.setHarvestLevel("pickaxe", 0);
-        this.setCreativeTab(TFCTabs.TFCBuilding);
+        this.setCreativeTab(TFCTabs.TFC_BUILDING);
         
         _startIndex = startIndex;
         

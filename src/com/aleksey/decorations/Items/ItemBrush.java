@@ -32,7 +32,7 @@ public class ItemBrush extends ItemTerra implements IFluidContainerItem
         super();
         
         setMaxDamage(Constants.Brush_Capacity);
-        setCreativeTab(TFCTabs.TFCMisc);
+        setCreativeTab(TFCTabs.TFC_MISC);
     }
     
     @Override

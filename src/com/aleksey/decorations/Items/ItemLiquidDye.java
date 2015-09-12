@@ -116,7 +116,7 @@ public class ItemLiquidDye extends ItemTerra
             if (!world.canMineBlock(player, x, y, z))
                 return is;
 
-            return new ItemStack(TFCItems.WoodenBucketEmpty);
+            return new ItemStack(TFCItems.woodenBucketEmpty);
         }
 
         return is;
